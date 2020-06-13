@@ -1,6 +1,7 @@
 package com.example.beokweather.di
 
 import com.example.beokweather.BuildConfig
+import com.example.beokweather.domain.WeatherService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -58,6 +59,11 @@ class NetworkModule {
             .addConverterFactory(converterFactory)
             .client(client)
             .build()
+
+    @Provides
+    @Singleton
+    fun provideWeatherService(retrofit: Retrofit): WeatherService =
+        retrofit.create(WeatherService::class.java)
 
     companion object {
         private const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
