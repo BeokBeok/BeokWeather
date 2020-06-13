@@ -4,9 +4,9 @@ import com.squareup.moshi.Json
 
 data class CoordResponse(
 
-    @Json(name = "lon")
+    @field:Json(name = "lon")
     val lon: Double? = null,
 
-    @Json(name = "lat")
+    @field:Json(name = "lat")
     val lat: Double? = null
 )

@@ -4,9 +4,9 @@ import com.squareup.moshi.Json
 
 data class WindResponse(
 
-    @Json(name = "deg")
+    @field:Json(name = "deg")
     val deg: Int? = null,
 
-    @Json(name = "speed")
+    @field:Json(name = "speed")
     val speed: Double? = null
 )

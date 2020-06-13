@@ -4,6 +4,6 @@ import com.squareup.moshi.Json
 
 data class CloudsResponse(
 
-    @Json(name = "all")
+    @field:Json(name = "all")
     val all: Int? = null
 )
