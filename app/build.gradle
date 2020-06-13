@@ -44,4 +44,12 @@ dependencies {
 
     implementation Dependencies.HILT_ANDROID
     kapt Dependencies.HILT_ANDROID_COMPILER
+
+    implementation NetworkDependencies.RETROFIT
+    implementation NetworkDependencies.LOGGING_INTERCEPTOR
+
+    implementation NetworkDependencies.MOSHI
+    implementation NetworkDependencies.CONVERTER_MOSHI
+    implementation NetworkDependencies.MOSHI_KOTLIN
+    kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
 }

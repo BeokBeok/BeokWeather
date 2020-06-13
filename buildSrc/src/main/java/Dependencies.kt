@@ -35,3 +35,17 @@ object TestDependencies {
     const val EXT_JUNIT = "androidx.test.ext:junit:1.1.1"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:3.2.0"
 }
+
+object NetworkDependencies {
+    private const val RETROFIT_VER = "2.7.2"
+    private const val MOSHI_VER = "1.9.2"
+
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VER"
+
+    const val CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VER"
+    const val MOSHI = "com.squareup.moshi:moshi:$MOSHI_VER"
+    const val MOSHI_KOTLIN = "com.squareup.moshi:moshi-kotlin:$MOSHI_VER"
+    const val MOSHI_KOTLIN_CODEGEN = "com.squareup.moshi:moshi-kotlin-codegen:$MOSHI_VER"
+
+    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:3.14.2"
+}
