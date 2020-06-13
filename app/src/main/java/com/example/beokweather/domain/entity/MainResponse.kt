@@ -1,5 +1,6 @@
 package com.example.beokweather.domain.entity
 
+import com.example.beokweather.model.MainModel
 import com.squareup.moshi.Json
 
 data class MainResponse(
@@ -22,3 +23,14 @@ data class MainResponse(
     @field:Json(name = "temp_max")
     val tempMax: Double? = null
 )
+
+fun MainResponse?.mapToModel() = this?.let {
+    MainModel(
+        temp = temp ?: 0.0,
+        tempMin = tempMin ?: 0.0,
+        humidity = humidity ?: 0,
+        pressure = pressure ?: 0,
+        feelsLike = feelsLike ?: 0.0,
+        tempMax = tempMax ?: 0.0
+    )
+} ?: MainModel()

@@ -1,5 +1,6 @@
 package com.example.beokweather.domain.entity
 
+import com.example.beokweather.model.SysModel
 import com.squareup.moshi.Json
 
 data class SysResponse(
@@ -19,3 +20,13 @@ data class SysResponse(
     @field:Json(name = "type")
     val type: Int? = null
 )
+
+fun SysResponse?.mapToModel() = this?.let {
+    SysModel(
+        country = country ?: "",
+        sunrise = sunrise ?: 0,
+        sunset = sunset ?: 0,
+        id = id ?: 0,
+        type = type ?: 0
+    )
+} ?: SysModel()
