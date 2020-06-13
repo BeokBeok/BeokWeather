@@ -5,5 +5,8 @@ import com.example.beokweather.util.Result
 
 interface WeatherDataSource {
 
-    suspend fun getCurrentWeather(cityName: String): Result<WeatherResponse>
+    suspend fun getCurrentWeather(
+        lat: Double,
+        lon: Double
+    ): Result<WeatherResponse>
 }

@@ -22,8 +22,8 @@ class MainViewModel @ViewModelInject constructor(
     private val _errMsg = MutableLiveData<String>()
     val errMsg: LiveData<String> get() = _errMsg
 
-    fun getCurrentWeather(cityName: String) = viewModelScope.launch {
-        val result = weatherRepository.getCurrentWeather(cityName)
+    fun getCurrentWeather(lat: Double, lon: Double) = viewModelScope.launch {
+        val result = weatherRepository.getCurrentWeather(lat, lon)
         if (result.isSuccess) {
             _weatherResponse.value = ((result as Result.Success).data).mapToModel()
         } else {

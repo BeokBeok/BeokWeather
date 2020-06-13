@@ -12,10 +12,16 @@ class WeatherRepository @Inject constructor(
 
     private val ioDispatcher = Dispatchers.IO
 
-    override suspend fun getCurrentWeather(cityName: String): Result<WeatherResponse> =
+    override suspend fun getCurrentWeather(lat: Double, lon: Double): Result<WeatherResponse> =
         withContext(ioDispatcher) {
             return@withContext try {
-                Result.Success(weatherService.getCurrentWeather(cityName))
+                Result.Success(
+                    weatherService.getCurrentWeather(
+                        lat = lat,
+                        lon = lon,
+                        units = "metric"
+                    )
+                )
             } catch (e: Exception) {
                 Result.Failure(e)
             }
