@@ -3,6 +3,7 @@
     package="com.example.beokweather">
 
     <application
+        android:name=".Beokplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
