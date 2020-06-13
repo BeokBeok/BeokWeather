@@ -1,6 +1,5 @@
 package com.example.beokweather.domain.entity
 
-import com.example.beokweather.model.WindModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -13,7 +12,3 @@ data class WindResponse(
     @field:Json(name = "speed")
     val speed: Double? = null
 )
-
-fun WindResponse?.mapToModel() = this?.let {
-    WindModel(deg = deg ?: 0, speed = speed ?: 0.0)
-} ?: WindModel()

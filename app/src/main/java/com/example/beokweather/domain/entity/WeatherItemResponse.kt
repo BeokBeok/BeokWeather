@@ -1,6 +1,5 @@
 package com.example.beokweather.domain.entity
 
-import com.example.beokweather.model.WeatherItemModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -20,11 +19,4 @@ data class WeatherItemResponse(
     val id: Int? = null
 )
 
-fun WeatherItemResponse?.mapToModel() = this?.let {
-    WeatherItemModel(
-        icon = icon ?: "",
-        description = description ?: "",
-        main = main ?: "",
-        id = id ?: 0
-    )
-} ?: WeatherItemModel()
+fun WeatherItemResponse?.mapToModel() = this?.let { icon } ?: ""

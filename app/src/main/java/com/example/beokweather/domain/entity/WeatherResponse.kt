@@ -51,5 +51,5 @@ fun WeatherResponse.mapToModel() = WeatherModel(
 	name = name ?: "",
 	timezone = timezone ?: 0,
 	main = mainResponse.mapToModel(),
-	weatherList = weatherResponse?.map { it.mapToModel() } ?: emptyList()
+	iconList = weatherResponse?.map { it.mapToModel() } ?: emptyList()
 )

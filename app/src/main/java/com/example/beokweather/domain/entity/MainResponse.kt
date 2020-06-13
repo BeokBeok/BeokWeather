@@ -28,10 +28,14 @@ data class MainResponse(
 
 fun MainResponse?.mapToModel() = this?.let {
     MainModel(
-        temp = temp ?: 0.0,
-        tempMin = tempMin ?: 0.0,
-        humidity = humidity ?: 0,
-        feelsLike = feelsLike ?: 0.0,
-        tempMax = tempMax ?: 0.0
+        temp = temp?.let {
+            it.toString().substringBefore(".") + "°"
+        } ?: "",
+        tempMin = tempMin?.let {
+            it.toString().substringBefore(".") + "°"
+        } ?: "",
+        tempMax = tempMax?.let {
+            it.toString().substringBefore(".") + "°"
+        } ?: ""
     )
 } ?: MainModel()
