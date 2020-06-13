@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion AndroidConfig.COMPILE_SDK
@@ -21,6 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -34,4 +41,7 @@ dependencies {
     testImplementation TestDependencies.JUNIT
     androidTestImplementation TestDependencies.EXT_JUNIT
     androidTestImplementation TestDependencies.ESPRESSO
+
+    implementation Dependencies.HILT_ANDROID
+    kapt Dependencies.HILT_ANDROID_COMPILER
 }
