@@ -48,17 +48,8 @@ data class WeatherResponse(
 )
 
 fun WeatherResponse.mapToModel() = WeatherModel(
-	visibility = visibility ?: 0,
-	timezone = timezone ?: 0,
-	mainResponse = mainResponse.mapToModel(),
-	cloudsResponse = cloudsResponse.mapToModel(),
-	sysResponse = sysResponse.mapToModel(),
-	dt = dt ?: 0,
-	coordResponse = coordResponse.mapToModel(),
-	weatherResponse = weatherResponse?.map { it.mapToModel() } ?: emptyList(),
 	name = name ?: "",
-	cod = cod ?: 0,
-	id = id ?: 0,
-	base = base ?: "",
-	windResponse = windResponse.mapToModel()
+	timezone = timezone ?: 0,
+	main = mainResponse.mapToModel(),
+	weatherList = weatherResponse?.map { it.mapToModel() } ?: emptyList()
 )
