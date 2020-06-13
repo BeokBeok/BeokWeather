@@ -2,7 +2,9 @@ package com.example.beokweather.domain.entity
 
 import com.example.beokweather.model.WeatherModel
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class WeatherResponse(
 
 	@field:Json(name = "visibility")

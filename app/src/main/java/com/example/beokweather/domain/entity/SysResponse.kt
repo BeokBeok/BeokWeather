@@ -2,7 +2,9 @@ package com.example.beokweather.domain.entity
 
 import com.example.beokweather.model.SysModel
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class SysResponse(
 
     @field:Json(name = "country")

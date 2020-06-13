@@ -2,7 +2,9 @@ package com.example.beokweather.domain.entity
 
 import com.example.beokweather.model.CoordModel
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class CoordResponse(
 
     @field:Json(name = "lon")
