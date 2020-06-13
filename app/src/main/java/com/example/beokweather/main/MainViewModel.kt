@@ -1,4 +1,4 @@
-package com.example.beokweather
+package com.example.beokweather.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
