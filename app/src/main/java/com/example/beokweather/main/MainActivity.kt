@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         ).apply {
             lifecycleOwner = this@MainActivity
+            vm = viewModel
         }
     }
 
