@@ -2,6 +2,7 @@ package com.example.beokweather.di
 
 import com.example.beokweather.BuildConfig
 import com.example.beokweather.domain.WeatherService
+import com.example.beokweather.interceptor.OpenWeatherMapInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
