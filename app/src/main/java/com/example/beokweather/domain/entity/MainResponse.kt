@@ -1,0 +1,24 @@
+package com.example.beokweather.domain.entity
+
+import com.squareup.moshi.Json
+
+data class MainResponse(
+
+    @Json(name = "temp")
+    val temp: Double? = null,
+
+    @Json(name = "temp_min")
+    val tempMin: Double? = null,
+
+    @Json(name = "humidity")
+    val humidity: Int? = null,
+
+    @Json(name = "pressure")
+    val pressure: Int? = null,
+
+    @Json(name = "feels_like")
+    val feelsLike: Double? = null,
+
+    @Json(name = "temp_max")
+    val tempMax: Double? = null
+)
