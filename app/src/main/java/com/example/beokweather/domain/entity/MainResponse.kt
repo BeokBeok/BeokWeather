@@ -31,7 +31,6 @@ fun MainResponse?.mapToModel() = this?.let {
         temp = temp ?: 0.0,
         tempMin = tempMin ?: 0.0,
         humidity = humidity ?: 0,
-        pressure = pressure ?: 0,
         feelsLike = feelsLike ?: 0.0,
         tempMax = tempMax ?: 0.0
     )
