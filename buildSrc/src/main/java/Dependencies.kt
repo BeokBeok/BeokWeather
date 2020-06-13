@@ -28,6 +28,8 @@ object Dependencies {
 
     const val HILT_ANDROID = "com.google.dagger:hilt-android:$HILT_VER"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:$HILT_VER"
+
+    const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
 }
 
 object TestDependencies {

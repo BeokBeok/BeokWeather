@@ -52,4 +52,6 @@ dependencies {
     implementation NetworkDependencies.CONVERTER_MOSHI
     implementation NetworkDependencies.MOSHI_KOTLIN
     kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
+
+    implementation Dependencies.COROUTINE
 }
