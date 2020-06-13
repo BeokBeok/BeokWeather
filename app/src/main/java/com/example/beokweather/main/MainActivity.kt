@@ -27,22 +27,34 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setupBinding()
+        if (checkLocationPermission()) return
+        showContents()
+    }
+
+    private fun setupBinding() {
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(
             this,
             R.layout.activity_main
         ).apply {
             lifecycleOwner = this@MainActivity
         }
+    }
 
+    private fun checkLocationPermission(): Boolean {
         if (isNotValidLocationPermission()) {
             Toast.makeText(
                 this,
                 R.string.msg_unavailable_app_because_permission_denied,
                 Toast.LENGTH_SHORT
             ).show()
-            return
+            return true
         }
+        return false
+    }
 
+    private fun showContents() {
         val coordinate = LocationUtil.getCoordinate(locationManager)
         if (coordinate.isSuccess) {
             val data = (coordinate as Result.Success).data
