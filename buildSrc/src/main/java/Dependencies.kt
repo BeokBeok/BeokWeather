@@ -19,6 +19,8 @@ object AndroidConfig {
 
 object Dependencies {
     private const val HILT_VER = "2.28-alpha"
+    private const val LIFECYCLE_VER = "2.2.0"
+    private const val HILT_JETPACK_VER = "1.0.0-alpha01"
 
     const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN}"
 
@@ -29,7 +31,15 @@ object Dependencies {
     const val HILT_ANDROID = "com.google.dagger:hilt-android:$HILT_VER"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:$HILT_VER"
 
+    const val DAGGER_HILT_LIFECYCLE_VM = "androidx.hilt:hilt-lifecycle-viewmodel:$HILT_JETPACK_VER"
+    const val HILT_COMPILER = "androidx.hilt:hilt-compiler:$HILT_JETPACK_VER"
+
     const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
+
+    const val LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:$LIFECYCLE_VER"
+    const val LIFECYCLE_VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VER"
+
+    const val FRAGMENT_EXT = "androidx.fragment:fragment-ktx:1.2.5"
 }
 
 object TestDependencies {

@@ -43,7 +43,9 @@ dependencies {
     androidTestImplementation TestDependencies.ESPRESSO
 
     implementation Dependencies.HILT_ANDROID
+    implementation Dependencies.DAGGER_HILT_LIFECYCLE_VM
     kapt Dependencies.HILT_ANDROID_COMPILER
+    kapt Dependencies.HILT_COMPILER
 
     implementation NetworkDependencies.RETROFIT
     implementation NetworkDependencies.LOGGING_INTERCEPTOR
@@ -54,4 +56,9 @@ dependencies {
     kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
 
     implementation Dependencies.COROUTINE
+
+    implementation Dependencies.LIFECYCLE_EXT
+    implementation Dependencies.LIFECYCLE_VIEWMODEL_KTX
+
+    implementation Dependencies.FRAGMENT_EXT
 }
