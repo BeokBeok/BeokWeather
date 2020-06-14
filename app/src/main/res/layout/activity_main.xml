@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,109 +12,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_main_current_container"
-            android:layout_width="0dp"
-            android:layout_height="360dp"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/holo_blue_dark"
-                app:layout_constraintDimensionRatio="360:360">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_main_weather_icon"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="40dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    bind:setWeatherIcon="@{vm.weathers.icon}"
-                    tools:src="@drawable/ic_weather_01d" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_main_current_area"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{vm.weathers.name}"
-                    android:textColor="@android:color/white"
-                    android:textSize="28sp"
-                    app:layout_constraintEnd_toEndOf="@id/tv_main_current_temp"
-                    app:layout_constraintStart_toStartOf="@id/tv_main_current_temp"
-                    app:layout_constraintTop_toTopOf="@id/iv_main_weather_icon"
-                    tools:text="서울시" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_main_current_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:gravity="center"
-                    android:text="@{vm.weathers.main.temp}"
-                    android:textColor="@android:color/white"
-                    android:textSize="84sp"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_main_weather_icon"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_main_weather_icon"
-                    app:layout_constraintTop_toTopOf="@id/iv_main_weather_icon"
-                    tools:text="35°" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_main_min_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="@{@string/label_low_temp(vm.weathers.main.tempMin == null ? `` : vm.weathers.main.tempMin)}"
-                    android:textColor="@android:color/white"
-                    android:textSize="40sp"
-                    app:layout_constraintEnd_toEndOf="@id/iv_main_weather_icon"
-                    app:layout_constraintStart_toStartOf="@id/iv_main_weather_icon"
-                    app:layout_constraintTop_toBottomOf="@id/iv_main_weather_icon"
-                    tools:text="최저\n30°" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_main_max_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="@{@string/label_high_temp(vm.weathers.main.tempMax == null ? `` : vm.weathers.main.tempMax)}"
-                    android:textColor="@android:color/white"
-                    android:textSize="40sp"
-                    app:layout_constraintEnd_toEndOf="@id/tv_main_current_temp"
-                    app:layout_constraintStart_toStartOf="@id/tv_main_current_temp"
-                    app:layout_constraintTop_toBottomOf="@id/tv_main_current_temp"
-                    tools:text="최고\n40°" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <View
-            android:id="@+id/v_main_boarder"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_main_current_container" />
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_main_forecast_weather"
+            android:id="@+id/rv_main_contents"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_main_boarder" />
+            app:layout_constraintTop_toTopOf="parent"
+            bind:replaceItems="@{vm.weathers}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
