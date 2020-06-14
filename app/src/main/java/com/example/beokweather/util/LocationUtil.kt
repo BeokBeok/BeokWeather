@@ -10,7 +10,12 @@ object LocationUtil {
             val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.run {
                 this
             } ?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-            Result.Success(CoordModel(lon = location.longitude, lat = location.latitude))
+            Result.Success(
+                CoordModel(
+                    lon = location?.longitude ?: 0.0,
+                    lat = location?.latitude ?: 0.0
+                )
+            )
         } catch (e: SecurityException) {
             Result.Failure(e)
         }
