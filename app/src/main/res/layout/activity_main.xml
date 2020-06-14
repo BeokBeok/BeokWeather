@@ -43,6 +43,18 @@
                     tools:src="@drawable/ic_weather_01d" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_main_current_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.weathers.name}"
+                    android:textColor="@android:color/white"
+                    android:textSize="28sp"
+                    app:layout_constraintEnd_toEndOf="@id/tv_main_current_temp"
+                    app:layout_constraintStart_toStartOf="@id/tv_main_current_temp"
+                    app:layout_constraintTop_toTopOf="@id/iv_main_weather_icon"
+                    tools:text="서울시" />
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_main_current_temp"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
