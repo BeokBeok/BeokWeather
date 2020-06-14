@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.collection.arrayMapOf
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -14,7 +15,9 @@ import com.example.beokweather.BR
 import com.example.beokweather.R
 import com.example.beokweather.base.BaseAdapter
 import com.example.beokweather.databinding.ActivityMainBinding
+import com.example.beokweather.detail.DetailActivity
 import com.example.beokweather.ext.isNotValidLocationPermission
+import com.example.beokweather.ext.startActivity
 import com.example.beokweather.model.ForecastModel
 import com.example.beokweather.util.LocationUtil
 import com.example.beokweather.util.Result
@@ -42,9 +45,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObserve() {
-        viewModel.errMsg.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-        })
+        val owner = this
+        viewModel.run {
+            errMsg.observe(owner, Observer {
+                Toast.makeText(owner, it, Toast.LENGTH_SHORT).show()
+            })
+            selectedItem.observe(owner, Observer {
+                it.getContentIfNotHandled()?.let { weatherItem ->
+                    startActivity<DetailActivity>(bundleOf("item" to weatherItem))
+                }
+            })
+        }
     }
 
     private fun setupRecyclerView() {
