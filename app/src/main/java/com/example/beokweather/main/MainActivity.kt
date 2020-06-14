@@ -5,14 +5,13 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.collection.arrayMapOf
 import androidx.core.os.bundleOf
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.beokweather.BR
 import com.example.beokweather.R
+import com.example.beokweather.base.BaseActivity
 import com.example.beokweather.base.BaseAdapter
 import com.example.beokweather.databinding.ActivityMainBinding
 import com.example.beokweather.detail.DetailActivity
@@ -25,9 +24,10 @@ import com.example.beokweather.util.isSuccess
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(
+    layoutId = R.layout.activity_main
+) {
 
-    private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
 
     private val locationManager by lazy {
@@ -38,13 +38,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         if (checkLocationPermission()) return
-        setupBinding()
         setupRecyclerView()
         showContents()
-        setupObserve()
     }
 
-    private fun setupObserve() {
+    override fun bindViewModel() {
+        binding.vm = viewModel
+    }
+
+    override fun setupObserve() {
         val owner = this
         viewModel.run {
             errMsg.observe(owner, Observer {
@@ -64,16 +66,6 @@ class MainActivity : AppCompatActivity() {
             viewModels = arrayMapOf(BR.vm to viewModel)
         )
         PagerSnapHelper().attachToRecyclerView(binding.rvMainContents)
-    }
-
-    private fun setupBinding() {
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(
-            this,
-            R.layout.activity_main
-        ).apply {
-            lifecycleOwner = this@MainActivity
-            vm = viewModel
-        }
     }
 
     private fun checkLocationPermission(): Boolean {
