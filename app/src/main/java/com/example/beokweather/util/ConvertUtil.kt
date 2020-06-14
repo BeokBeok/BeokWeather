@@ -18,6 +18,7 @@ object ConvertUtil {
         listItem.add(
             WeatherItem(
                 name = forecastList[0].name,
+                date = dateFormatForYYYYMMDD.format(now),
                 icon = forecastList[0].list[0].icon,
                 temp = forecastList[0].list[0].main.temp,
                 tempMin = forecastList[0].list[0].main.tempMin,
@@ -31,6 +32,7 @@ object ConvertUtil {
             listItem.add(
                 WeatherItem(
                     name = forecastList[0].name,
+                    date = key,
                     icon = forecastByDate[key]?.get(0)?.icon ?: "",
                     temp = forecastByDate[key]?.get(0)?.main?.temp ?: "",
                     tempMin = forecastByDate[key]?.get(0)?.main?.tempMin ?: "",

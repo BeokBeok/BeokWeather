@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupBinding()
         if (checkLocationPermission()) return
+        setupBinding()
         setupRecyclerView()
         showContents()
     }

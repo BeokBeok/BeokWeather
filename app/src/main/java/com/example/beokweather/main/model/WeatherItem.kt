@@ -4,6 +4,7 @@ import com.example.beokweather.model.ListItemModel
 
 data class WeatherItem(
     val name: String = "",
+    val date: String = "",
     val icon: String = "",
     val temp: String = "",
     val tempMin: String = "",
