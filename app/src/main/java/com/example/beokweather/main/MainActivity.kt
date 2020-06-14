@@ -12,14 +12,14 @@ import com.example.beokweather.BR
 import com.example.beokweather.R
 import com.example.beokweather.base.BaseActivity
 import com.example.beokweather.base.BaseAdapter
+import com.example.beokweather.base.type.Result
+import com.example.beokweather.base.type.isSuccess
 import com.example.beokweather.databinding.ActivityMainBinding
 import com.example.beokweather.detail.DetailActivity
 import com.example.beokweather.ext.isNotValidLocationPermission
 import com.example.beokweather.ext.startActivity
 import com.example.beokweather.model.ForecastModel
 import com.example.beokweather.util.LocationUtil
-import com.example.beokweather.util.Result
-import com.example.beokweather.util.isSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

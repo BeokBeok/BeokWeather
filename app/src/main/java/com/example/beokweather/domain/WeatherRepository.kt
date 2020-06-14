@@ -1,8 +1,8 @@
 package com.example.beokweather.domain
 
+import com.example.beokweather.base.type.Result
 import com.example.beokweather.domain.entity.ForecastResponse
 import com.example.beokweather.domain.entity.WeatherResponse
-import com.example.beokweather.util.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

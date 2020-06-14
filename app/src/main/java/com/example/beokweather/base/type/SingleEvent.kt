@@ -1,4 +1,4 @@
-package com.example.beokweather.util
+package com.example.beokweather.base.type
 
 class SingleEvent<out T>(private val content: T) {
 

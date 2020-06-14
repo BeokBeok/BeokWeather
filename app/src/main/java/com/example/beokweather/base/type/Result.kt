@@ -1,4 +1,4 @@
-package com.example.beokweather.util
+package com.example.beokweather.base.type
 
 sealed class Result<out R> {
 

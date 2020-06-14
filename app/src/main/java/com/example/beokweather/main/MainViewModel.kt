@@ -5,15 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.beokweather.base.BaseViewModel
+import com.example.beokweather.base.type.Result
+import com.example.beokweather.base.type.SingleEvent
+import com.example.beokweather.base.type.isSuccess
 import com.example.beokweather.domain.WeatherRepository
 import com.example.beokweather.domain.entity.mapToModel
 import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.model.ForecastModel
 import com.example.beokweather.model.ListItemModel
 import com.example.beokweather.util.ConvertUtil
-import com.example.beokweather.util.Result
-import com.example.beokweather.util.SingleEvent
-import com.example.beokweather.util.isSuccess
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
@@ -33,7 +33,8 @@ class MainViewModel @ViewModelInject constructor(
 
     override fun onClick(item: Any?) {
         if (item is WeatherItem) {
-            _selectedItem.value = SingleEvent(item)
+            _selectedItem.value =
+                SingleEvent(item)
         }
     }
 

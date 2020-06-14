@@ -1,6 +1,7 @@
 package com.example.beokweather.util
 
 import android.location.LocationManager
+import com.example.beokweather.base.type.Result
 import com.example.beokweather.model.CoordModel
 
 object LocationUtil {
