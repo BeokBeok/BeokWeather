@@ -1,6 +1,5 @@
 package com.example.beokweather.main
 
-import android.content.Context
 import android.location.LocationManager
 import android.os.Bundle
 import android.widget.Toast
@@ -22,17 +21,16 @@ import com.example.beokweather.util.LocationUtil
 import com.example.beokweather.util.Result
 import com.example.beokweather.util.isSuccess
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(
     layoutId = R.layout.activity_main
 ) {
-
     private val viewModel by viewModels<MainViewModel>()
 
-    private val locationManager by lazy {
-        getSystemService(Context.LOCATION_SERVICE) as LocationManager
-    }
+    @Inject
+    lateinit var locationManager: LocationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
