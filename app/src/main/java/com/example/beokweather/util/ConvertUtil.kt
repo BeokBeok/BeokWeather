@@ -18,7 +18,7 @@ object ConvertUtil {
         listItem.add(
             WeatherItem(
                 name = forecastList[0].name,
-                date = dateFormatForYYYYMMDD.format(now),
+                date = "Today",
                 icon = forecastList[0].list[0].icon,
                 temp = forecastList[0].list[0].main.temp,
                 tempMin = forecastList[0].list[0].main.tempMin,
