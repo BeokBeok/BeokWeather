@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.collection.arrayMapOf
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.beokweather.BR
 import com.example.beokweather.R
@@ -37,6 +38,13 @@ class MainActivity : AppCompatActivity() {
         setupBinding()
         setupRecyclerView()
         showContents()
+        setupObserve()
+    }
+
+    private fun setupObserve() {
+        viewModel.errMsg.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun setupRecyclerView() {
