@@ -1,8 +1,7 @@
 package com.example.beokweather.model
 
 data class WeatherModel(
-    val timezone: Int = 0,
+    val name: String = "",
     val main: MainModel = MainModel(),
-    val iconList: List<String> = emptyList(),
-    val name: String = ""
+    val icon: String = ""
 )

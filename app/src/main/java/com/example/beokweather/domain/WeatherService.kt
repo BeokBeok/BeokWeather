@@ -1,5 +1,6 @@
 package com.example.beokweather.domain
 
+import com.example.beokweather.domain.entity.ForecastResponse
 import com.example.beokweather.domain.entity.WeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,4 +16,14 @@ interface WeatherService {
         @Query("units")
         units: String
     ): WeatherResponse
+
+    @GET("forecast")
+    suspend fun getForecastWeather(
+        @Query("lat")
+        lat: Double,
+        @Query("lon")
+        lon: Double,
+        @Query("units")
+        units: String
+    ): ForecastResponse
 }

@@ -1,5 +1,6 @@
 package com.example.beokweather.domain
 
+import com.example.beokweather.domain.entity.ForecastResponse
 import com.example.beokweather.domain.entity.WeatherResponse
 import com.example.beokweather.util.Result
 import kotlinx.coroutines.Dispatchers
@@ -16,14 +17,25 @@ class WeatherRepository @Inject constructor(
         withContext(ioDispatcher) {
             return@withContext try {
                 Result.Success(
-                    weatherService.getCurrentWeather(
-                        lat = lat,
-                        lon = lon,
-                        units = "metric"
-                    )
+                    weatherService.getCurrentWeather(lat = lat, lon = lon, units = UNITS)
                 )
             } catch (e: Exception) {
                 Result.Failure(e)
             }
         }
+
+    override suspend fun getForecastWeather(lat: Double, lon: Double): Result<ForecastResponse> =
+        withContext(ioDispatcher) {
+            return@withContext try {
+                Result.Success(
+                    weatherService.getForecastWeather(lat = lat, lon = lon, units = UNITS)
+                )
+            } catch (e: Exception) {
+                Result.Failure(e)
+            }
+        }
+
+    companion object {
+        private const val UNITS = "metric"
+    }
 }

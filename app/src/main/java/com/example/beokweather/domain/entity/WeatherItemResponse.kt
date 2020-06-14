@@ -18,5 +18,3 @@ data class WeatherItemResponse(
     @field:Json(name = "id")
     val id: Int? = null
 )
-
-fun WeatherItemResponse?.mapToModel() = this?.let { icon } ?: ""

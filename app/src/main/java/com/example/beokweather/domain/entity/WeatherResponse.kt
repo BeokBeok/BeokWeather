@@ -49,7 +49,6 @@ data class WeatherResponse(
 
 fun WeatherResponse.mapToModel() = WeatherModel(
 	name = name ?: "",
-	timezone = timezone ?: 0,
 	main = mainResponse.mapToModel(),
-	iconList = weatherResponse?.map { it.mapToModel() } ?: emptyList()
+	icon = weatherResponse?.get(0)?.icon ?: ""
 )

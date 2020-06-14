@@ -23,7 +23,16 @@ data class MainResponse(
     val feelsLike: Double? = null,
 
     @field:Json(name = "temp_max")
-    val tempMax: Double? = null
+    val tempMax: Double? = null,
+
+    @field:Json(name = "grnd_level")
+    val grndLevel: Int? = null,
+
+    @field:Json(name = "temp_kf")
+    val tempKf: Double? = null,
+
+    @field:Json(name = "sea_level")
+    val seaLevel: Int? = null
 )
 
 fun MainResponse?.mapToModel() = this?.let {

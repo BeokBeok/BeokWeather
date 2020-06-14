@@ -30,4 +30,13 @@ class MainViewModel @ViewModelInject constructor(
             _errMsg.value = (result as Result.Failure).exception.message
         }
     }
+
+    fun getForecastWeather(lat: Double, lon: Double) = viewModelScope.launch {
+        val result = weatherRepository.getForecastWeather(lat, lon)
+        if (result.isSuccess) {
+//            _weathers.value = ((result as Result.Success).data).mapToModel()
+        } else {
+            _errMsg.value = (result as Result.Failure).exception.message
+        }
+    }
 }
