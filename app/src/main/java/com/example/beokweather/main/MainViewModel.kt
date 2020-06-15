@@ -14,6 +14,7 @@ import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.model.ForecastModel
 import com.example.beokweather.model.ListItemModel
 import com.example.beokweather.util.ConvertUtil
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
@@ -39,7 +40,10 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     fun getWeather(lat: Double, lon: Double) = viewModelScope.launch {
-        weatherRepository.getCurrentWeather(lat, lon).let {
+        val currentWeather = async { weatherRepository.getCurrentWeather(lat, lon) }
+        val forecastWeather = async { weatherRepository.getForecastWeather(lat, lon) }
+
+        currentWeather.await().let {
             if (it.isSuccess) {
                 (it as Result.Success).data.mapToModel().run {
                     weatherList.add(
@@ -54,7 +58,7 @@ class MainViewModel @ViewModelInject constructor(
             }
         }
 
-        weatherRepository.getForecastWeather(lat, lon).let {
+        forecastWeather.await().let {
             if (it.isSuccess) {
                 weatherList.add((it as Result.Success).data.mapToModel())
             } else {
