@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.beokweather.model.ListItemModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:background="@android:color/holo_blue_dark">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_forecast_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.dtTxt.substring(item.dtTxt.indexOf(` `), item.dtTxt.length - 3)}"
+            android:textColor="@android:color/white"
+            tools:text="00:00" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_forecast_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            bind:setWeatherIcon="@{item.icon}"
+            tools:src="@drawable/ic_weather_01d" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_forecast_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{item.main.temp}"
+            android:textColor="@android:color/white"
+            tools:text="30°" />
+
+    </LinearLayout>
+</layout>
