@@ -13,100 +13,96 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="12dp"
-        android:background="@drawable/background_round"
-        android:elevation="4dp"
-        tools:context=".detail.DetailActivity">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@{vm.weatherItem.date}"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="오늘" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_detail_weather_icon"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            bind:setWeatherIcon="@{vm.weatherItem.icon}"
-            tools:src="@drawable/ic_weather_01d" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_detail_current_area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.weatherItem.name}"
-            android:textColor="@android:color/white"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
-            app:layout_constraintStart_toStartOf="@id/tv_detail_current_temp"
-            app:layout_constraintTop_toTopOf="@id/iv_detail_weather_icon"
-            tools:text="서울시" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_detail_current_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="@{vm.weatherItem.temp}"
-            android:textColor="@android:color/white"
-            android:textSize="84sp"
-            app:layout_constraintBottom_toBottomOf="@id/iv_detail_weather_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_detail_weather_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_detail_weather_icon"
-            tools:text="35°" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_detail_min_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@{@string/label_low_temp(vm.weatherItem.tempMin == null ? `` : vm.weatherItem.tempMin)}"
-            android:textColor="@android:color/white"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="@id/iv_detail_weather_icon"
-            app:layout_constraintStart_toStartOf="@id/iv_detail_weather_icon"
-            app:layout_constraintTop_toBottomOf="@id/iv_detail_weather_icon"
-            tools:text="최저\n30°" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_detail_max_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@{@string/label_high_temp(vm.weatherItem.tempMax == null ? `` : vm.weatherItem.tempMax)}"
-            android:textColor="@android:color/white"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
-            app:layout_constraintStart_toStartOf="@id/tv_detail_current_temp"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_current_temp"
-            tools:text="최고\n40°" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_detail_forecast"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="24dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
-            app:layout_constraintStart_toStartOf="@id/iv_detail_weather_icon"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_max_temp"
-            bind:replaceItems="@{vm.weatherItem.detail}" />
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_round"
+            android:elevation="4dp"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".detail.DetailActivity">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.weatherItem.date}"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="오늘" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_detail_weather_icon"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:setWeatherIcon="@{vm.weatherItem.icon}"
+                tools:src="@drawable/ic_weather_01d" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_detail_current_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="@{vm.weatherItem.temp}"
+                android:textColor="@android:color/white"
+                android:textSize="84sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_detail_weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_detail_weather_icon"
+                tools:text="35°" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_detail_min_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@{@string/label_low_temp(vm.weatherItem.tempMin == null ? `` : vm.weatherItem.tempMin)}"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="@id/iv_detail_weather_icon"
+                app:layout_constraintStart_toStartOf="@id/iv_detail_weather_icon"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail_weather_icon"
+                tools:text="최저\n30°" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_detail_max_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@{@string/label_high_temp(vm.weatherItem.tempMax == null ? `` : vm.weatherItem.tempMax)}"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
+                app:layout_constraintStart_toStartOf="@id/tv_detail_current_temp"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_current_temp"
+                tools:text="최고\n40°" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_detail_forecast"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
+                app:layout_constraintStart_toStartOf="@id/iv_detail_weather_icon"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_max_temp"
+                bind:replaceItems="@{vm.weatherItem.detail}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
