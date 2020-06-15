@@ -11,11 +11,12 @@
 
 # 적용기술
 - Jetpack
+  - LiveData
   - Lifecycle
   - ViewModel
 
 - Network
-  - Retrofit
+  - Retrofit & OkHttp3
 
 - Convertor
   - Moshi
