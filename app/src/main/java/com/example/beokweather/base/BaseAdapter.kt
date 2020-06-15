@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 open class BaseAdapter<ITEM : Any>(
     private val layoutBindingId: Pair<Int, Int>,
-    private val viewModels: ArrayMap<Int, BaseViewModel>
+    private val viewModels: ArrayMap<Int, BaseViewModel>? = null
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private val itemList = mutableListOf<ITEM>()
