@@ -53,6 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
             selectedItem.observe(owner, Observer {
                 it.getContentIfNotHandled()?.let { weatherItem ->
                     startActivity<DetailActivity>(bundleOf("item" to weatherItem))
+                    overridePendingTransition(0, 0)
                 }
             })
         }

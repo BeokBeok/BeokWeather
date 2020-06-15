@@ -28,4 +28,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(
             layoutBindingId = Pair(R.layout.item_weather_forecast, BR.item)
         )
     }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
+    }
 }
