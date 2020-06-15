@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">BeokWeather</string>
-    <string name="dialog_title_permission_settings">권한 설정</string>
-    <string name="msg_unavailable_app_because_permission_denied">권한 거절로 인해 앱을 사용할 수 없습니다.</string>
-    <string name="label_go_permission_settings">권한 설정하러 가기</string>
-    <string name="label_cancel">취소하기</string>
-    <string name="msg_app_finish">앱이 종료됩니다.</string>
+    <string name="dialog_title_permission_settings">Permission settings</string>
+    <string name="msg_unavailable_app_because_permission_denied">The app is not available by permission denied.</string>
+    <string name="label_go_permission_settings">Go permission settings</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="msg_app_finish">The app will quit.</string>
     <string name="label_low_temp">Low\n%s</string>
     <string name="label_high_temp">High\n%s</string>
 </resources>
