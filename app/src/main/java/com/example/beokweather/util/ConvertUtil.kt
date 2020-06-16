@@ -1,8 +1,8 @@
 package com.example.beokweather.util
 
 import android.annotation.SuppressLint
-import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.main.model.Forecast
+import com.example.beokweather.main.model.WeatherItem
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,7 +12,7 @@ object ConvertUtil {
     private val dateFormatForYYYYMMDD = SimpleDateFormat("yyyy-MM-dd")
 
     fun convertToWeatherItem(forecastList: List<Forecast>): List<WeatherItem> {
-        val now = Date()
+        val now = dateFormatForYYYYMMDD.format(Date())
         val listItem = mutableListOf<WeatherItem>()
         val forecastByDate = forecastList[1].list.groupBy { it.dtTxt.substringBefore(" ") }
         listItem.add(
@@ -23,12 +23,12 @@ object ConvertUtil {
                 temp = forecastList[0].list[0].main.temp,
                 tempMin = forecastList[0].list[0].main.tempMin,
                 tempMax = forecastList[0].list[0].main.tempMax,
-                detail = forecastByDate[dateFormatForYYYYMMDD.format(now)] ?: emptyList()
+                detail = forecastByDate[now] ?: emptyList()
             )
         )
 
         for (key in forecastByDate.keys) {
-            if (key == dateFormatForYYYYMMDD.format(now)) continue
+            if (key == now) continue
             listItem.add(
                 WeatherItem(
                     name = forecastList[0].name,
