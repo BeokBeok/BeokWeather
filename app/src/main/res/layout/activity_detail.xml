@@ -27,34 +27,35 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@drawable/background_round"
-            android:elevation="4dp"
-            android:padding="16dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_blue_dark"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tb_detail_toolbar">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_detail_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{vm.weatherItem.date}"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@id/iv_detail_weather_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread"
                 tools:text="오늘" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_detail_weather_icon"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
-                android:layout_marginTop="60dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_detail_min_temp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_date"
                 bind:setWeatherIcon="@{vm.weatherItem.icon}"
                 tools:src="@drawable/ic_weather_01d" />
 
@@ -75,11 +76,11 @@
                 android:id="@+id/tv_detail_min_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@{@string/label_low_temp(vm.weatherItem.tempMin == null ? `` : vm.weatherItem.tempMin)}"
                 android:textColor="@android:color/white"
                 android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@id/rv_detail_forecast"
                 app:layout_constraintEnd_toEndOf="@id/iv_detail_weather_icon"
                 app:layout_constraintStart_toStartOf="@id/iv_detail_weather_icon"
                 app:layout_constraintTop_toBottomOf="@id/iv_detail_weather_icon"
@@ -89,26 +90,25 @@
                 android:id="@+id/tv_detail_max_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@{@string/label_high_temp(vm.weatherItem.tempMax == null ? `` : vm.weatherItem.tempMax)}"
                 android:textColor="@android:color/white"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
                 app:layout_constraintStart_toStartOf="@id/tv_detail_current_temp"
-                app:layout_constraintTop_toBottomOf="@id/tv_detail_current_temp"
+                app:layout_constraintTop_toTopOf="@id/tv_detail_min_temp"
                 tools:text="최고\n40°" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_detail_forecast"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="24dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/tv_detail_current_temp"
                 app:layout_constraintStart_toStartOf="@id/iv_detail_weather_icon"
-                app:layout_constraintTop_toBottomOf="@id/tv_detail_max_temp"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_min_temp"
                 bind:replaceItems="@{vm.weatherItem.detail}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
