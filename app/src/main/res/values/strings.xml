@@ -7,4 +7,5 @@
     <string name="msg_app_finish">The app will quit.</string>
     <string name="label_low_temp">Low\n%s</string>
     <string name="label_high_temp">High\n%s</string>
+    <string name="msg_no_contents">No contents.</string>
 </resources>

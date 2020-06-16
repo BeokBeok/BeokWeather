@@ -10,9 +10,9 @@ import com.example.beokweather.base.type.SingleEvent
 import com.example.beokweather.base.type.isSuccess
 import com.example.beokweather.domain.WeatherRepository
 import com.example.beokweather.domain.entity.mapToModel
-import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.main.model.Forecast
 import com.example.beokweather.main.model.ListItem
+import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.util.ConvertUtil
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -34,8 +34,7 @@ class MainViewModel @ViewModelInject constructor(
 
     override fun onClick(item: Any?) {
         if (item is WeatherItem) {
-            _selectedItem.value =
-                SingleEvent(item)
+            _selectedItem.value = SingleEvent(item)
         }
     }
 
@@ -43,6 +42,7 @@ class MainViewModel @ViewModelInject constructor(
         val currentWeather = async { weatherRepository.getCurrentWeather(lat, lon) }
         val forecastWeather = async { weatherRepository.getForecastWeather(lat, lon) }
 
+        var exceptionMsg = ""
         currentWeather.await().let {
             if (it.isSuccess) {
                 (it as Result.Success).data.mapToModel().run {
@@ -60,7 +60,7 @@ class MainViewModel @ViewModelInject constructor(
                     )
                 }
             } else {
-                _errMsg.value = (it as Result.Failure).exception.message
+                exceptionMsg = (it as Result.Failure).exception.message ?: ""
             }
         }
 
@@ -68,10 +68,15 @@ class MainViewModel @ViewModelInject constructor(
             if (it.isSuccess) {
                 weatherList.add((it as Result.Success).data.mapToModel())
             } else {
-                _errMsg.value = (it as Result.Failure).exception.message
+                exceptionMsg = (it as Result.Failure).exception.message ?: ""
             }
         }
 
-        _weathers.value = ConvertUtil.convertToWeatherItem(weatherList)
+        if (exceptionMsg.isNotEmpty()) {
+            _errMsg.value = exceptionMsg
+            _weathers.value = emptyList()
+        } else {
+            _weathers.value = ConvertUtil.convertToWeatherItem(weatherList)
+        }
     }
 }

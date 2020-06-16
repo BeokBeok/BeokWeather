@@ -12,6 +12,8 @@ object ConvertUtil {
     private val dateFormatForYYYYMMDD = SimpleDateFormat("yyyy-MM-dd")
 
     fun convertToWeatherItem(forecastList: List<Forecast>): List<WeatherItem> {
+        if (forecastList.isEmpty()) return emptyList()
+
         val now = dateFormatForYYYYMMDD.format(Date())
         val listItem = mutableListOf<WeatherItem>()
         val forecastByDate = forecastList[1].list.groupBy { it.dtTxt.substringBefore(" ") }
