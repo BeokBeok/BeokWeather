@@ -11,8 +11,8 @@ import com.example.beokweather.base.type.isSuccess
 import com.example.beokweather.domain.WeatherRepository
 import com.example.beokweather.domain.entity.mapToModel
 import com.example.beokweather.main.model.WeatherItem
-import com.example.beokweather.model.ForecastModel
-import com.example.beokweather.model.ListItemModel
+import com.example.beokweather.main.model.Forecast
+import com.example.beokweather.main.model.ListItem
 import com.example.beokweather.util.ConvertUtil
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -30,7 +30,7 @@ class MainViewModel @ViewModelInject constructor(
     private val _selectedItem = MutableLiveData<SingleEvent<WeatherItem>>()
     val selectedItem: LiveData<SingleEvent<WeatherItem>> get() = _selectedItem
 
-    private val weatherList = mutableListOf<ForecastModel>()
+    private val weatherList = mutableListOf<Forecast>()
 
     override fun onClick(item: Any?) {
         if (item is WeatherItem) {
@@ -47,9 +47,15 @@ class MainViewModel @ViewModelInject constructor(
             if (it.isSuccess) {
                 (it as Result.Success).data.mapToModel().run {
                     weatherList.add(
-                        ForecastModel(
+                        Forecast(
                             name = name,
-                            list = listOf(ListItemModel(dtTxt = "Today", icon = icon, main = main))
+                            list = listOf(
+                                ListItem(
+                                    dtTxt = "Today",
+                                    icon = icon,
+                                    main = main
+                                )
+                            )
                         )
                     )
                 }

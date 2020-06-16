@@ -1,6 +1,6 @@
 package com.example.beokweather.domain.entity
 
-import com.example.beokweather.model.ListItemModel
+import com.example.beokweather.main.model.ListItem
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -30,9 +30,9 @@ data class ListItemResponse(
 )
 
 fun ListItemResponse?.mapToModel() = this?.let {
-    ListItemModel(
+    ListItem(
         dtTxt = dtTxt ?: "",
         icon = weather?.get(0)?.icon ?: "",
         main = main.mapToModel()
     )
-} ?: ListItemModel()
+} ?: ListItem()

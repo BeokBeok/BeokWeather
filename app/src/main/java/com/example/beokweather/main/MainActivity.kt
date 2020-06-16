@@ -18,7 +18,7 @@ import com.example.beokweather.databinding.ActivityMainBinding
 import com.example.beokweather.detail.DetailActivity
 import com.example.beokweather.ext.isNotValidLocationPermission
 import com.example.beokweather.ext.startActivity
-import com.example.beokweather.model.ForecastModel
+import com.example.beokweather.main.model.Forecast
 import com.example.beokweather.util.LocationUtil
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -60,7 +60,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
     }
 
     private fun setupRecyclerView() {
-        binding.rvMainContents.adapter = BaseAdapter<ForecastModel>(
+        binding.rvMainContents.adapter = BaseAdapter<Forecast>(
             layoutBindingId = Pair(R.layout.item_weather, BR.weather_item),
             viewModels = arrayMapOf(BR.vm to viewModel)
         )

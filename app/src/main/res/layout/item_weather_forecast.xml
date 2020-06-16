@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.beokweather.model.ListItemModel" />
+            type="com.example.beokweather.main.model.ListItem" />
     </data>
 
     <LinearLayout

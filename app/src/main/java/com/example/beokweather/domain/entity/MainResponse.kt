@@ -1,6 +1,6 @@
 package com.example.beokweather.domain.entity
 
-import com.example.beokweather.model.MainModel
+import com.example.beokweather.main.model.Main
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -36,7 +36,7 @@ data class MainResponse(
 )
 
 fun MainResponse?.mapToModel() = this?.let {
-    MainModel(
+    Main(
         temp = temp?.let {
             it.toString().substringBefore(".") + "°"
         } ?: "",
@@ -47,4 +47,4 @@ fun MainResponse?.mapToModel() = this?.let {
             it.toString().substringBefore(".") + "°"
         } ?: ""
     )
-} ?: MainModel()
+} ?: Main()

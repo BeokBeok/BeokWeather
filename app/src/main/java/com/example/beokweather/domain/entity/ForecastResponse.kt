@@ -1,6 +1,6 @@
 package com.example.beokweather.domain.entity
 
-import com.example.beokweather.model.ForecastModel
+import com.example.beokweather.main.model.Forecast
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -24,8 +24,8 @@ data class ForecastResponse(
 )
 
 fun ForecastResponse?.mapToModel() = this?.let {
-    ForecastModel(
+    Forecast(
         name = city.mapToModel(),
         list = list?.map { it.mapToModel() } ?: emptyList()
     )
-} ?: ForecastModel()
+} ?: Forecast()

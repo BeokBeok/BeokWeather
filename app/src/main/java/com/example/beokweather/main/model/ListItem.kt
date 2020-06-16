@@ -1,11 +1,11 @@
-package com.example.beokweather.model
+package com.example.beokweather.main.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ListItemModel(
+data class ListItem(
     val dtTxt: String = "",
     val icon: String = "",
-    val main: MainModel = MainModel()
+    val main: Main = Main()
 ) : Parcelable

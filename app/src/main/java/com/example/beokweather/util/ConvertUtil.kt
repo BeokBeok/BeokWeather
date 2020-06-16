@@ -2,7 +2,7 @@ package com.example.beokweather.util
 
 import android.annotation.SuppressLint
 import com.example.beokweather.main.model.WeatherItem
-import com.example.beokweather.model.ForecastModel
+import com.example.beokweather.main.model.Forecast
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -11,7 +11,7 @@ object ConvertUtil {
     @SuppressLint("SimpleDateFormat")
     private val dateFormatForYYYYMMDD = SimpleDateFormat("yyyy-MM-dd")
 
-    fun convertToWeatherItem(forecastList: List<ForecastModel>): List<WeatherItem> {
+    fun convertToWeatherItem(forecastList: List<Forecast>): List<WeatherItem> {
         val now = Date()
         val listItem = mutableListOf<WeatherItem>()
         val forecastByDate = forecastList[1].list.groupBy { it.dtTxt.substringBefore(" ") }
