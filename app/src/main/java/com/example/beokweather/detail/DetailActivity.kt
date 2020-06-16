@@ -7,8 +7,8 @@ import com.example.beokweather.R
 import com.example.beokweather.base.BaseActivity
 import com.example.beokweather.base.BaseAdapter
 import com.example.beokweather.databinding.ActivityDetailBinding
-import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.main.model.ListItem
+import com.example.beokweather.main.model.WeatherItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,13 +26,25 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.rvDetailForecast.adapter = BaseAdapter<ListItem>(
-            layoutBindingId = Pair(R.layout.item_weather_forecast, BR.item)
-        )
+        setupToolbar()
+        setupRecyclerView()
     }
 
     override fun finish() {
         super.finish()
         overridePendingTransition(0, 0)
+    }
+
+    private fun setupToolbar() {
+        binding.tbDetailToolbar.run {
+            setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+            setOnClickListener { finish() }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvDetailForecast.adapter = BaseAdapter<ListItem>(
+            layoutBindingId = Pair(R.layout.item_weather_forecast, BR.item)
+        )
     }
 }
