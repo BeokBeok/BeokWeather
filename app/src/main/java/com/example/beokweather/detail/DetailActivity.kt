@@ -9,7 +9,9 @@ import com.example.beokweather.base.BaseAdapter
 import com.example.beokweather.databinding.ActivityDetailBinding
 import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.model.ListItemModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailActivity : BaseActivity<ActivityDetailBinding>(
     layoutId = R.layout.activity_detail
 ) {
