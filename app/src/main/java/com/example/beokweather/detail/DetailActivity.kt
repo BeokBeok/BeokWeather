@@ -32,7 +32,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(0, 0)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left)
     }
 
     private fun setupToolbar() {
