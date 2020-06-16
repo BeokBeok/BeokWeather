@@ -6,8 +6,8 @@ import com.example.beokweather.main.model.Coord
 
 object LocationUtil {
 
-    fun getCoordinate(locationManager: LocationManager): Result<Coord> {
-        return try {
+    fun getCoordinate(locationManager: LocationManager): Result<Coord> =
+        try {
             val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.run {
                 this
             } ?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
@@ -20,6 +20,5 @@ object LocationUtil {
         } catch (e: SecurityException) {
             Result.Failure(e)
         }
-    }
 }
 
