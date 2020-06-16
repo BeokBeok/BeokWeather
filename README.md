@@ -10,22 +10,18 @@
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
 # 적용기술
-- Jetpack
-  - LiveData
-  - Lifecycle
-  - ViewModel
-
-- Network
-  - Retrofit & OkHttp3
-
-- Convertor
-  - Moshi
-
-- DI
-  - Dagger Hilt
-
-- Async
-  - Coroutine
+### Jetpack
+- LiveData
+- Lifecycle
+- ViewModel
+### Network
+- Retrofit & OkHttp3
+### Convertor
+- Moshi
+### DI
+- Dagger Hilt
+### Async
+- Coroutine
 
 # Open API
 [openweathermap](https://openweathermap.org/api)
