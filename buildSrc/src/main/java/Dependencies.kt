@@ -40,7 +40,7 @@ object Dependencies {
     const val LIFECYCLE_EXT = "androidx.lifecycle:lifecycle-extensions:$LIFECYCLE_VER"
     const val LIFECYCLE_VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VER"
 
-    const val FRAGMENT_EXT = "androidx.fragment:fragment-ktx:1.2.5"
+    const val ACTIVITY_KTX = "androidx.activity:activity-ktx:1.1.0"
 
     const val GLIDE = "com.github.bumptech.glide:glide:$GLIDE_VER"
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:$GLIDE_VER"

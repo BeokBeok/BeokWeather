@@ -68,7 +68,7 @@ dependencies {
     implementation Dependencies.LIFECYCLE_EXT
     implementation Dependencies.LIFECYCLE_VIEWMODEL_KTX
 
-    implementation Dependencies.FRAGMENT_EXT
+    implementation Dependencies.ACTIVITY_KTX
 
     implementation Dependencies.GLIDE
     kapt Dependencies.GLIDE_COMPILER
