@@ -22,13 +22,20 @@ object ConvertUtil {
         val convertedList = mutableListOf<WeatherItem>()
 
         convertedList.add(
-            convertToTodayWeather(current, groupedForecastList[now] ?: emptyList())
+            convertToTodayWeather(
+                current = current,
+                detail = groupedForecastList[now] ?: emptyList()
+            )
         )
 
         for (key in groupedForecastList.keys) {
             if (key == now) continue
             convertedList.add(
-                convertToForecastWeather(key, groupedForecastList[key] ?: emptyList())
+                convertToForecastWeather(
+                    area = current.name,
+                    date = key,
+                    detail = groupedForecastList[key] ?: emptyList()
+                )
             )
         }
         return convertedList
@@ -45,8 +52,9 @@ object ConvertUtil {
             detail = detail
         )
 
-    private fun convertToForecastWeather(date: String, detail: List<ListItem>) =
+    private fun convertToForecastWeather(area: String, date: String, detail: List<ListItem>) =
         WeatherItem(
+            name = area,
             date = date,
             icon = detail[0].icon,
             temp = detail[0].main.temp,
