@@ -49,11 +49,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
             errMsg.observe(owner, Observer {
                 Toast.makeText(owner, it, Toast.LENGTH_SHORT).show()
             })
-            selectedItem.observe(owner, Observer {
-                it.getContentIfNotHandled()?.let { weatherItem ->
-                    startActivity<DetailActivity>(bundleOf("item" to weatherItem))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
-                }
+            selectedItem.observe(owner, Observer { weatherItem ->
+                startActivity<DetailActivity>(bundleOf("item" to weatherItem))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
             })
         }
     }

@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.beokweather.base.BaseViewModel
 import com.example.beokweather.base.type.Result
-import com.example.beokweather.base.type.SingleEvent
 import com.example.beokweather.domain.WeatherRepository
 import com.example.beokweather.domain.entity.mapToModel
 import com.example.beokweather.main.model.Forecast
@@ -26,8 +25,8 @@ class MainViewModel @ViewModelInject constructor(
     private val _errMsg = MutableLiveData<String>()
     val errMsg: LiveData<String> get() = _errMsg
 
-    private val _selectedItem = MutableLiveData<SingleEvent<WeatherItem>>()
-    val selectedItem: LiveData<SingleEvent<WeatherItem>> get() = _selectedItem
+    private val _selectedItem = MutableLiveData<WeatherItem>()
+    val selectedItem: LiveData<WeatherItem> get() = _selectedItem
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
@@ -36,7 +35,7 @@ class MainViewModel @ViewModelInject constructor(
 
     override fun onClick(item: Any?) {
         if (item is WeatherItem) {
-            _selectedItem.value = SingleEvent(item)
+            _selectedItem.value = item
         }
     }
 
