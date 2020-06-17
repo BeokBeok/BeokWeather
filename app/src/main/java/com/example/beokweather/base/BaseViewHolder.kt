@@ -1,8 +1,8 @@
 package com.example.beokweather.base
 
+import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.collection.ArrayMap
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

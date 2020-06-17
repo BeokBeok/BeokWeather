@@ -1,7 +1,7 @@
 package com.example.beokweather.base
 
+import android.util.ArrayMap
 import android.view.ViewGroup
-import androidx.collection.ArrayMap
 import androidx.recyclerview.widget.RecyclerView
 
 open class BaseAdapter<ITEM : Any>(
