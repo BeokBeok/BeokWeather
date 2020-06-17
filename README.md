@@ -4,24 +4,25 @@
 오늘의 날씨와 오늘 기준 + 5일까지의 날씨 조회
 
 # Demo
-![화면 기록 2020-06-15 오후 10 50 06 mov](https://user-images.githubusercontent.com/48344355/84666214-c3cb8080-af5b-11ea-8770-bab64806ffaa.gif)
+![화면 기록 2020-06-17 오후 9 55 41 mov](https://user-images.githubusercontent.com/48344355/84900875-aaeed680-b0e5-11ea-909d-1a1189e3caf3.gif)
 
 # 아키텍쳐
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 
 # 적용기술
 ### Jetpack
-- LiveData
-- Lifecycle
-- ViewModel
+- [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle)
+- [Databinding](https://developer.android.com/jetpack/androidx/releases/databinding)
+- [Activity](https://developer.android.com/jetpack/androidx/releases/activity)
+- [Hilt](https://developer.android.com/jetpack/androidx/releases/hilt)
 ### Network
-- Retrofit & OkHttp3
+- [Retrofit & OkHttp3](https://square.github.io/retrofit/)
 ### Convertor
-- Moshi
-### DI
-- Dagger Hilt
+- [Moshi](https://github.com/square/moshi)
 ### Async
-- Coroutine
+- [Coroutine](https://github.com/Kotlin/kotlinx.coroutines)
+### Image
+- [Glide](https://github.com/bumptech/glide)
 
 # Open API
 [openweathermap](https://openweathermap.org/api)
