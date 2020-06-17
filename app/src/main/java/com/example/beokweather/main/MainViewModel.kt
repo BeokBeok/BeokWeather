@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.beokweather.base.BaseViewModel
 import com.example.beokweather.base.type.Result
 import com.example.beokweather.base.type.SingleEvent
-import com.example.beokweather.base.type.isSuccess
 import com.example.beokweather.domain.WeatherRepository
 import com.example.beokweather.domain.entity.mapToModel
 import com.example.beokweather.main.model.Forecast
@@ -47,32 +46,28 @@ class MainViewModel @ViewModelInject constructor(
         val forecastWeather = async { weatherRepository.getForecastWeather(lat, lon) }
 
         var exceptionMsg = ""
-        currentWeather.await().let {
-            if (it.isSuccess) {
-                (it as Result.Success).data.mapToModel().run {
+        when (val current = currentWeather.await()) {
+            is Result.Success -> {
+                current.data.mapToModel().run {
                     weatherList.add(
                         Forecast(
                             name = name,
-                            list = listOf(
-                                ListItem(
-                                    dtTxt = "Today",
-                                    icon = icon,
-                                    main = main
-                                )
-                            )
+                            list = listOf(ListItem(dtTxt = "Today", icon = icon, main = main))
                         )
                     )
                 }
-            } else {
-                exceptionMsg = (it as Result.Failure).exception.message ?: ""
+            }
+            is Result.Failure -> {
+                exceptionMsg = current.exception.message ?: ""
             }
         }
 
-        forecastWeather.await().let {
-            if (it.isSuccess) {
-                weatherList.add((it as Result.Success).data.mapToModel())
-            } else {
-                exceptionMsg = (it as Result.Failure).exception.message ?: ""
+        when (val forecast = forecastWeather.await()) {
+            is Result.Success -> {
+                weatherList.add(forecast.data.mapToModel())
+            }
+            is Result.Failure -> {
+                exceptionMsg = forecast.exception.message ?: ""
             }
         }
 

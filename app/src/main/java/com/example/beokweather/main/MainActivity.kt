@@ -13,7 +13,6 @@ import com.example.beokweather.R
 import com.example.beokweather.base.BaseActivity
 import com.example.beokweather.base.BaseAdapter
 import com.example.beokweather.base.type.Result
-import com.example.beokweather.base.type.isSuccess
 import com.example.beokweather.databinding.ActivityMainBinding
 import com.example.beokweather.detail.DetailActivity
 import com.example.beokweather.ext.isNotValidLocationPermission
@@ -80,13 +79,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
     }
 
     private fun showContents() {
-        val coordinate = LocationUtil.getCoordinate(locationManager)
-        if (coordinate.isSuccess) {
-            val data = (coordinate as Result.Success).data
-            viewModel.getWeather(data.lat, data.lon)
-        } else {
-            val exception = (coordinate as Result.Failure).exception
-            Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
+        when (val coordinate = LocationUtil.getCoordinate(locationManager)) {
+            is Result.Success -> {
+                viewModel.getWeather(coordinate.data.lat, coordinate.data.lon)
+            }
+            is Result.Failure -> {
+                Toast.makeText(this, coordinate.exception.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
