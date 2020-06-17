@@ -21,6 +21,7 @@ object Dependencies {
     private const val HILT_VER = "2.28-alpha"
     private const val LIFECYCLE_VER = "2.2.0"
     private const val HILT_JETPACK_VER = "1.0.0-alpha01"
+    private const val GLIDE_VER = "4.11.0"
 
     const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN}"
 
@@ -40,6 +41,9 @@ object Dependencies {
     const val LIFECYCLE_VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VER"
 
     const val FRAGMENT_EXT = "androidx.fragment:fragment-ktx:1.2.5"
+
+    const val GLIDE = "com.github.bumptech.glide:glide:$GLIDE_VER"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:$GLIDE_VER"
 }
 
 object TestDependencies {
