@@ -30,6 +30,9 @@ class MainViewModel @ViewModelInject constructor(
     private val _selectedItem = MutableLiveData<SingleEvent<WeatherItem>>()
     val selectedItem: LiveData<SingleEvent<WeatherItem>> get() = _selectedItem
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
     private val weatherList = mutableListOf<Forecast>()
 
     override fun onClick(item: Any?) {
@@ -39,6 +42,7 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     fun getWeather(lat: Double, lon: Double) = viewModelScope.launch {
+        showLoading()
         val currentWeather = async { weatherRepository.getCurrentWeather(lat, lon) }
         val forecastWeather = async { weatherRepository.getForecastWeather(lat, lon) }
 
@@ -78,5 +82,14 @@ class MainViewModel @ViewModelInject constructor(
         } else {
             _weathers.value = ConvertUtil.convertToWeatherItem(weatherList)
         }
+        hideLoading()
+    }
+
+    private fun hideLoading() {
+        _isLoading.value = false
+    }
+
+    private fun showLoading() {
+        _isLoading.value = true
     }
 }
