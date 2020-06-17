@@ -46,7 +46,7 @@
             app:layout_constraintEnd_toStartOf="@id/tv_current_temp"
             app:layout_constraintTop_toTopOf="parent"
             bind:setWeatherIcon="@{weather_item.icon}"
-            tools:src="@drawable/ic_weather_01d" />
+            tools:src="@android:drawable/ic_menu_help" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_current_temp"

@@ -33,7 +33,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             bind:setWeatherIcon="@{item.icon}"
-            tools:src="@drawable/ic_weather_01d" />
+            tools:src="@android:drawable/ic_menu_help" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_forecast_temp"
