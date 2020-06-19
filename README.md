@@ -17,7 +17,7 @@
 - [Hilt](https://developer.android.com/jetpack/androidx/releases/hilt)
 ### Network
 - [Retrofit & OkHttp3](https://square.github.io/retrofit/)
-### Convertor
+### JSON Convertor
 - [Moshi](https://github.com/square/moshi)
 ### Async
 - [Coroutine](https://github.com/Kotlin/kotlinx.coroutines)
