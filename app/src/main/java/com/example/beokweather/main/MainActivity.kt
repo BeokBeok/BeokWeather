@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.beokweather.BR
 import com.example.beokweather.R
 import com.example.beokweather.base.BaseActivity
@@ -24,9 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(
-    layoutId = R.layout.activity_main
-) {
+class MainActivity : BaseActivity<ActivityMainBinding>(layoutId = R.layout.activity_main) {
     private val viewModel by viewModels<MainViewModel>()
 
     @Inject
@@ -64,7 +61,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
                 put(BR.vm, viewModel)
             }
         )
-        PagerSnapHelper().attachToRecyclerView(binding.rvMainContents)
     }
 
     private fun checkLocationPermission(): Boolean {
