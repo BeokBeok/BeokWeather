@@ -39,25 +39,14 @@ class SplashActivity : AppCompatActivity() {
 
     private fun navigateAccordingToPermission() {
         if (isNotValidLocationPermission()) {
-            if (requestLocationPermissionIfDeniedBefore()) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                    ),
-                    0
-                )
-            } else {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                    ),
-                    0
-                )
-            }
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                0
+            )
         } else {
             startActivity<MainActivity>()
         }
@@ -88,15 +77,4 @@ class SplashActivity : AppCompatActivity() {
             .create()
             .show()
     }
-
-    private fun requestLocationPermissionIfDeniedBefore(): Boolean =
-        ActivityCompat.shouldShowRequestPermissionRationale(
-            this,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ).and(
-            ActivityCompat.shouldShowRequestPermissionRationale(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-        )
 }
