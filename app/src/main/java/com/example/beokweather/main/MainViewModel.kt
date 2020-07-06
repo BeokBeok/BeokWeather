@@ -44,7 +44,6 @@ class MainViewModel @ViewModelInject constructor(
         val currentWeather = async { weatherRepository.getCurrentWeather(lat, lon) }
         val forecastWeather = async { weatherRepository.getForecastWeather(lat, lon) }
 
-        var exceptionMsg = ""
         when (val current = currentWeather.await()) {
             is Result.Success -> {
                 current.data.mapToModel().run {
@@ -57,7 +56,10 @@ class MainViewModel @ViewModelInject constructor(
                 }
             }
             is Result.Failure -> {
-                exceptionMsg = current.exception.message ?: ""
+                hideLoading()
+                _errMsg.value = current.exception.message ?: ""
+                _weathers.value = emptyList()
+                return@launch
             }
         }
 
@@ -66,17 +68,19 @@ class MainViewModel @ViewModelInject constructor(
                 weatherList.add(forecast.data.mapToModel())
             }
             is Result.Failure -> {
-                exceptionMsg = forecast.exception.message ?: ""
+                hideLoading()
+                _errMsg.value = forecast.exception.message ?: ""
+                _weathers.value = emptyList()
+                return@launch
             }
         }
 
-        if (exceptionMsg.isNotEmpty()) {
-            _errMsg.value = exceptionMsg
-            _weathers.value = emptyList()
-        } else {
-            _weathers.value = ConvertUtil.convertToWeatherItem(weatherList)
-        }
+        setupWeatherItem()
         hideLoading()
+    }
+
+    private fun setupWeatherItem() {
+        _weathers.value = ConvertUtil.convertToWeatherItem(weatherList)
     }
 
     private fun hideLoading() {
