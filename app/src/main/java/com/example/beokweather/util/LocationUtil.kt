@@ -8,9 +8,8 @@ object LocationUtil {
 
     fun getCoordinate(locationManager: LocationManager): Result<Coord> =
         try {
-            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.run {
-                this
-            } ?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                ?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
             Result.Success(
                 Coord(
                     lon = location?.longitude ?: 0.0,
