@@ -6,13 +6,7 @@ import com.example.beokweather.domain.entity.WeatherResponse
 
 interface WeatherDataSource {
 
-    suspend fun getCurrentWeather(
-        lat: Double,
-        lon: Double
-    ): Result<WeatherResponse>
+    suspend fun getCurrentWeather(lat: Double, lon: Double): Result<WeatherResponse>
 
-    suspend fun getForecastWeather(
-        lat: Double,
-        lon: Double
-    ): Result<ForecastResponse>
+    suspend fun getForecastWeather(lat: Double, lon: Double): Result<ForecastResponse>
 }

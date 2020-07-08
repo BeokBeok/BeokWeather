@@ -67,11 +67,7 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             .setNegativeButton(getString(R.string.label_cancel)) { _, _ ->
-                Toast.makeText(
-                    this,
-                    getString(R.string.msg_app_finish),
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, getString(R.string.msg_app_finish), Toast.LENGTH_SHORT).show()
                 finish()
             }
             .create()

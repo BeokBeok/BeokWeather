@@ -12,9 +12,7 @@ import com.example.beokweather.main.model.WeatherItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailActivity : BaseActivity<ActivityDetailBinding>(
-    layoutId = R.layout.activity_detail
-) {
+class DetailActivity : BaseActivity<ActivityDetailBinding>(layoutId = R.layout.activity_detail) {
 
     private val viewModel by viewModels<DetailViewModel>()
 
