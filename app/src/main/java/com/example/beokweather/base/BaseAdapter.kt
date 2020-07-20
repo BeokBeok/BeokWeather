@@ -2,11 +2,12 @@ package com.example.beokweather.base
 
 import android.util.ArrayMap
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 
 open class BaseAdapter<ITEM : Any>(
     private val layoutBindingId: Pair<Int, Int>,
-    private val viewModels: ArrayMap<Int, BaseViewModel>? = null
+    private val viewModels: ArrayMap<Int, ViewModel>? = null
 ) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private val itemList = mutableListOf<ITEM>()

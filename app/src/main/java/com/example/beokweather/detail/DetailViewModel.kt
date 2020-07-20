@@ -3,10 +3,10 @@ package com.example.beokweather.detail
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.beokweather.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.example.beokweather.main.model.WeatherItem
 
-class DetailViewModel @ViewModelInject constructor() : BaseViewModel() {
+class DetailViewModel @ViewModelInject constructor() : ViewModel() {
 
     private val _weatherItem = MutableLiveData<WeatherItem>()
     val weatherItem: LiveData<WeatherItem> get() = _weatherItem

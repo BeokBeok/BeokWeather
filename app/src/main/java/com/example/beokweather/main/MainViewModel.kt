@@ -3,8 +3,8 @@ package com.example.beokweather.main
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.beokweather.base.BaseViewModel
 import com.example.beokweather.base.type.Result
 import com.example.beokweather.domain.WeatherRepository
 import com.example.beokweather.domain.entity.mapToModel
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
     private val weatherRepository: WeatherRepository
-) : BaseViewModel() {
+) : ViewModel() {
 
     private val _weathers = MutableLiveData<List<WeatherItem>>()
     val weathers: LiveData<List<WeatherItem>> get() = _weathers
@@ -33,7 +33,7 @@ class MainViewModel @ViewModelInject constructor(
 
     private val weatherList = mutableListOf<Forecast>()
 
-    override fun onClick(item: Any?) {
+    fun onClick(item: Any?) {
         if (item is WeatherItem) {
             _selectedItem.value = item
         }

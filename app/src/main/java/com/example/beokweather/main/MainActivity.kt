@@ -7,11 +7,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import com.example.beokweather.BR
 import com.example.beokweather.R
 import com.example.beokweather.base.BaseActivity
 import com.example.beokweather.base.BaseAdapter
-import com.example.beokweather.base.BaseViewModel
 import com.example.beokweather.base.type.Result
 import com.example.beokweather.databinding.ActivityMainBinding
 import com.example.beokweather.detail.DetailActivity
@@ -58,7 +58,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(layoutId = R.layout.activ
     private fun setupRecyclerView() {
         binding.rvMainContents.adapter = BaseAdapter<Forecast>(
             layoutBindingId = Pair(R.layout.item_weather, BR.weather_item),
-            viewModels = ArrayMap<Int, BaseViewModel>().apply {
+            viewModels = ArrayMap<Int, ViewModel>().apply {
                 put(BR.vm, viewModel)
             }
         )
