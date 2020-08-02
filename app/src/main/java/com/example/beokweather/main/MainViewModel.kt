@@ -11,11 +11,12 @@ import com.example.beokweather.main.model.WeatherItem
 import com.example.beokweather.main.model.mapToModel
 import com.example.beokweather.util.ConvertUtil
 import com.example.common.type.Result
+import com.example.data.WeatherRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
-    private val weatherRepository: com.example.data.WeatherRepository
+    private val weatherRepository: WeatherRepository
 ) : ViewModel() {
 
     private val _weathers = MutableLiveData<List<WeatherItem>>()
