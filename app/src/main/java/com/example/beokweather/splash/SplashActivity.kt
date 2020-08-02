@@ -11,9 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.beokweather.R
-import com.example.beokweather.ext.isNotValidLocationPermission
-import com.example.beokweather.ext.startActivity
 import com.example.beokweather.main.MainActivity
+import com.example.common.ext.isNotValidLocationPermission
+import com.example.common.ext.startActivity
 
 class SplashActivity : AppCompatActivity() {
 

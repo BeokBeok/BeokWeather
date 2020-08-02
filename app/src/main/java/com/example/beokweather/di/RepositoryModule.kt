@@ -1,8 +1,8 @@
 package com.example.beokweather.di
 
-import com.example.beokweather.domain.WeatherDataSource
-import com.example.beokweather.domain.WeatherRepository
-import com.example.beokweather.domain.WeatherService
+import com.example.data.WeatherDataSource
+import com.example.data.WeatherRepository
+import com.example.data.WeatherService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

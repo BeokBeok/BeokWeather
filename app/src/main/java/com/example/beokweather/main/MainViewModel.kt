@@ -5,18 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.beokweather.base.type.Result
-import com.example.beokweather.domain.WeatherRepository
-import com.example.beokweather.domain.entity.mapToModel
 import com.example.beokweather.main.model.Forecast
 import com.example.beokweather.main.model.ListItem
 import com.example.beokweather.main.model.WeatherItem
+import com.example.beokweather.main.model.mapToModel
 import com.example.beokweather.util.ConvertUtil
+import com.example.common.type.Result
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor(
-    private val weatherRepository: WeatherRepository
+    private val weatherRepository: com.example.data.WeatherRepository
 ) : ViewModel() {
 
     private val _weathers = MutableLiveData<List<WeatherItem>>()

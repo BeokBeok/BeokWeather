@@ -1,14 +1,12 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion AndroidConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId AndroidConfig.APP_ID
         minSdkVersion AndroidConfig.MIN_SDK
         targetSdkVersion AndroidConfig.COMPILE_SDK
         versionCode AndroidConfig.VERSION_CODE
@@ -23,43 +21,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildFeatures {
-        dataBinding = true
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
     implementation project(":common")
-    implementation project(":data")
 
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation Dependencies.KOTLIN_STDLIB
-
-    implementation Dependencies.MATERIAL
-    implementation Dependencies.CORE_KTX
-    implementation Dependencies.CONSTRAINT_LAYOUT
-
-    testImplementation TestDependencies.JUNIT
-    androidTestImplementation TestDependencies.EXT_JUNIT
-    androidTestImplementation TestDependencies.ESPRESSO
 
     implementation Dependencies.HILT_ANDROID
     implementation Dependencies.DAGGER_HILT_LIFECYCLE_VM
     kapt Dependencies.HILT_ANDROID_COMPILER
     kapt Dependencies.HILT_COMPILER
-
-    implementation NetworkDependencies.RETROFIT
-    implementation NetworkDependencies.LOGGING_INTERCEPTOR
 
     implementation NetworkDependencies.MOSHI
     implementation NetworkDependencies.CONVERTER_MOSHI
@@ -67,12 +39,4 @@ dependencies {
     kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
 
     implementation Dependencies.COROUTINE
-
-    implementation Dependencies.LIFECYCLE_EXT
-    implementation Dependencies.LIFECYCLE_VIEWMODEL_KTX
-
-    implementation Dependencies.ACTIVITY_KTX
-
-    implementation Dependencies.GLIDE
-    kapt Dependencies.GLIDE_COMPILER
 }
