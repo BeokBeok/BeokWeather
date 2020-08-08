@@ -9,21 +9,18 @@ import com.example.beokweather.main.model.ListItem
 import com.example.beokweather.main.model.WeatherItem
 import com.example.common.base.BaseActivity
 import com.example.common.base.BaseAdapter
+import com.example.common.base.ViewModelBindComponent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailActivity : BaseActivity<ActivityDetailBinding>(layoutId = R.layout.activity_detail) {
 
     private val viewModel by viewModels<DetailViewModel>()
-
-    override fun bindViewModel() {
-        binding.vm = viewModel.apply {
-            setupItem((intent.extras?.get("item") as? WeatherItem) ?: WeatherItem())
-        }
-    }
+    private val viewModelBindComponent = ViewModelBindComponent()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupBinding()
         setupToolbar()
         setupRecyclerView()
     }
@@ -31,6 +28,16 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(layoutId = R.layout.a
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left)
+    }
+
+    private fun setupBinding() {
+        viewModelBindComponent.run {
+            bindViewModel {
+                binding.vm = viewModel.apply {
+                    setupItem((intent.extras?.get("item") as? WeatherItem) ?: WeatherItem())
+                }
+            }
+        }
     }
 
     private fun setupToolbar() {

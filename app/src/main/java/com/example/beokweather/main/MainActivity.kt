@@ -16,6 +16,7 @@ import com.example.beokweather.main.model.Forecast
 import com.example.beokweather.util.LocationUtil
 import com.example.common.base.BaseActivity
 import com.example.common.base.BaseAdapter
+import com.example.common.base.ViewModelBindComponent
 import com.example.common.ext.isNotValidLocationPermission
 import com.example.common.ext.startActivity
 import com.example.common.type.Result
@@ -26,6 +27,7 @@ import javax.inject.Inject
 class MainActivity : BaseActivity<ActivityMainBinding>(layoutId = R.layout.activity_main) {
 
     private val viewModel by viewModels<MainViewModel>()
+    private val viewModelBindComponent = ViewModelBindComponent()
 
     @Inject
     lateinit var locationManager: LocationManager
@@ -34,16 +36,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(layoutId = R.layout.activ
         super.onCreate(savedInstanceState)
 
         if (checkLocationPermission()) return
+        setupBinding()
         setupRecyclerView()
         showContents()
     }
 
-    override fun bindViewModel() {
-        binding.vm = viewModel
+    private fun setupBinding() {
+        viewModelBindComponent.run {
+            bindViewModel {
+                binding.vm = viewModel
+            }
+            bindObserver {
+                setupObserve()
+            }
+        }
     }
 
-    override fun setupObserve() {
-        val owner = this
+    private fun setupObserve() {
+        val owner = this@MainActivity
         viewModel.run {
             errMsg.observe(owner, Observer {
                 Toast.makeText(owner, it, Toast.LENGTH_SHORT).show()
